@@ -1,4 +1,5 @@
 import os
+import threading
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='web')
@@ -11,7 +12,10 @@ def serve_index():
 def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
+def run_bot():
+    os.system("python bot.py")
+
 if __name__ == "__main__":
-    import os
+    threading.Thread(target=run_bot).start()
     port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port)
