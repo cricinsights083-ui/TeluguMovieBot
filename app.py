@@ -1,6 +1,5 @@
 import os
 import threading
-import subprocess
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='web')
@@ -9,14 +8,23 @@ app = Flask(__name__, static_folder='web')
 def serve_index():
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route('/health')
+def health():
+    return "Bot Running Successfully"
+
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
 def run_bot():
-    subprocess.Popen(["python", "bot.py"])
+    os.system("python bot.py")
 
 if __name__ == "__main__":
-    threading.Thread(target=run_bot).start()
+
+    bot_thread = threading.Thread(target=run_bot)
+
+    bot_thread.start()
+
     port = int(os.environ.get("PORT", 10000))
-    app.run(host='0.0.0.0', port=port)
+
+    app.run(host="0.0.0.0", port=port)
