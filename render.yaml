@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: file-store-bot
+    env: docker
+    plan: free
+    region: oregon
+    buildCommand: docker build -t filter .
+    startCommand: GUNICORN_RUNNING=True gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: DB_CHANNEL_ID
+        sync: false
+      - key: OWNER_ID
+        sync: false
