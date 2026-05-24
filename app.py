@@ -1,5 +1,6 @@
 import os
 import threading
+import subprocess
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='web')
@@ -13,9 +14,9 @@ def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
 def run_bot():
-    os.system("python bot.py")
+    subprocess.Popen(["python", "bot.py"])
 
 if __name__ == "__main__":
     threading.Thread(target=run_bot).start()
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
