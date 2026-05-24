@@ -19,7 +19,7 @@ HELP_TEXT = os.environ.get("HELP_TEXT", "📖 **Help Menu**\n\n1. Send any movie
 ABOUT_TEXT = os.environ.get("ABOUT_TEXT", "❄️ **About This Bot**\n\nThis is a high-speed file storage and search bot for CineVerse users. It indexes thousands of files and provides them with minimal delay.\n\nDeveloper: [ @TDBotDev ]")
 
 # Database Settings
-MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://prakashhydra4314:8eXeW61PWvVfaKrI@helper.gobq9id.mongodb.net/?appName=helper")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://hydra4314:adVOd4KxmDidrYvl@cluster0.2fq917d.mongodb.net/?appName=Cluster0")
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "autofilebot")
 COLLECTION_NAME = "files"
 
